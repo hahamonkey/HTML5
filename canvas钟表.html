@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:#000;
+        }
+        #cav{
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cav" width="600" height="600"></canvas>
+<script>
+    var oCav= document.querySelector("#cav");
+    var oCtx = oCav.getContext("2d");
+    var setTime=function(){
+        oCtx.clearRect(0,0,600,600);
+        oCtx.beginPath();
+        oCtx.lineWidth=4;
+        //画刻度盘秒
+        for(var i=0;i<60;i++){
+            oCtx.moveTo(300,300);
+            oCtx.arc(300,300,200,i*Math.PI/30,(i+1)*Math.PI/30);
+        }
+        oCtx.stroke();
+        oCtx.closePath();
+        oCtx.beginPath();
+        oCtx.arc(300,300,194,0,Math.PI*2);
+        oCtx.fillStyle='#fff';
+        oCtx.fill();
+        oCtx.closePath();
+        //画刻度盘分钟
+        oCtx.beginPath();
+        oCtx.moveTo(300,300);
+        for(var i=0;i<12;i++){
+            oCtx.moveTo(300,300);
+            oCtx.arc(300,300,200,i*Math.PI/6,i*Math.PI/6);
+        }
+        oCtx.stroke();
+        oCtx.closePath();
+        oCtx.beginPath();
+        oCtx.moveTo(300,300);
+        oCtx.arc(300,300,185,0,Math.PI*2);
+        oCtx.fillStyle='#fff';
+        oCtx.fill();
+        oCtx.closePath();
+
+        //获取当前时间
+        var date=new Date();
+        var sec=date.getSeconds();
+        var min=date.getMinutes();
+        var hour=date.getHours();
+
+        //画秒、分、时针
+        oCtx.beginPath();
+        oCtx.moveTo(300,300);
+        oCtx.arc(300,300,180,sec*(Math.PI/30)-Math.PI/2,sec*(Math.PI/30)-Math.PI/2,true);
+        oCtx.strokeStyle='red';
+        oCtx.lineWidth=4;
+        oCtx.stroke();
+        oCtx.closePath();
+
+        oCtx.beginPath();
+        oCtx.moveTo(300,300);
+        oCtx.arc(300,300,120,(sec/60+min)*Math.PI/30-Math.PI/2,(sec/60+min)*Math.PI/30-Math.PI/2,true);
+        oCtx.strokeStyle='green';
+        oCtx.lineWidth=6;
+        oCtx.stroke();
+        oCtx.closePath();
+
+        oCtx.beginPath();
+        oCtx.moveTo(300,300);
+        oCtx.arc(300,300,80,(min/60+hour)*Math.PI/6-Math.PI/2,(min/60+hour)*Math.PI/6-Math.PI/2,true);
+        oCtx.strokeStyle='black';
+        oCtx.lineWidth=8;
+        oCtx.stroke();
+        oCtx.closePath();
+
+        //中心圆
+        oCtx.beginPath();
+        oCtx.moveTo(300,300);
+        oCtx.arc(300,300,15,0,Math.PI*2);
+        oCtx.fillStyle='red';
+        oCtx.fill();
+        oCtx.closePath();
+    };
+    setTime();
+    var timer=setInterval('setTime()',1000);
+</script>
+</body>
+</html>

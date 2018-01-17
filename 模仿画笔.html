@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:#000;
+        }
+        #cav{
+            background-color: rgb(240,240,240);
+        }
+    </style>
+</head>
+<body>
+<canvas id="cav"></canvas>
+<script>
+    //Dom对象下
+    var oCav= document.querySelector("#cav");
+    //画布2d对象下
+    var oCtx = oCav.getContext("2d");
+    //全屏
+    oCav.setAttribute("width",screen.width);
+    oCav.setAttribute("height",screen.height);
+
+    oCtx.strokeStyle = "red";
+    oCtx.lineWidth = 2;
+    oCav.onmousedown=function(e){
+        oCtx.moveTo(e.clientX, e.clientY);
+        document.onmousemove=function(e){
+            oCtx.lineTo(e.clientX, e.clientY);
+            oCtx.stroke();
+        };
+        oCav.onmouseup=function(){
+            document.onmousemove=null;
+        }
+    }
+</script>
+</body>
+</html>
