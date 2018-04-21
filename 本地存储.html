@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    //sessionStorage在浏览器关闭后就消失
+    //localStorage一直存在需要手动清除
+    //cookie可以自定义有效期
+
+   /* sessionStorage.name = 'aa';
+    sessionStorage.age = '111';*/
+
+
+    sessionStorage.setItem('name','aa');
+    sessionStorage.setItem('age','111');
+    sessionStorage.removeItem('name');//清除某一个
+    sessionStorage.clear(); //清除所有
+    //localStorage也有以上四个方法
+</script>
+</html>
