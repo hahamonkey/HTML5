@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var str='{"name":"wangzeng","age":"20"}';
+    //1、字符串转换为json对象  parse方法
+    var obj = JSON.parse(str);
+    console.log(obj);
+
+
+    var obj1 = {name:'wangzeng',age:"20"};
+    //2、对象转化为字符串  stringify方法
+    var str1 = JSON.stringify(obj1);
+
+
+    //3、eval(str)能将字符串转化为js代码，当然也可以转化为对象
+    var str2 = "alert('hh')";
+    eval(str2);
+
+
+    //深克隆对象
+    var person1 = {
+        name:"wangzeng",
+        age:"20"
+    };
+    //旧方法
+    /*function clone(obj){
+     var newObj = {};
+     for(key in obj){
+     if(newObj[key] instanceof 'object'){
+     newObj[key] = clone(newObj[key]);
+     }
+     newObj[key] = obj[key];
+     }
+     return newObj;
+     }*/
+    //以下方法在IE8一下不会支持
+    var str3 = JSON.stringify(person1);
+    var person2 = JSON.parse(str);
+</script>
+</html>

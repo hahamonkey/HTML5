@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -14,16 +14,17 @@
     var obj={};
     oBtn.onclick=function(){
         oSpan.innerHTML='';
+        var arr = [];
         var randNum=Math.random();
         for(var i=0;i<7;i++){
-            oSpan.innerHTML+= parseInt(Math.random()*35+1)+' ';
+            arr.push(parseInt(Math.random()*35+1));
         }
+        oSpan.innerHTML = arr;
         location.hash=randNum;
         obj[randNum]=oSpan.innerHTML;
     };
     window.onhashchange=function(){
         var hash=location.hash.substring(1);
-        console.log(hash);
         if(hash)
             oSpan.innerHTML=obj[hash];
         else

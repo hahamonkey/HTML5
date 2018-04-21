@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1" aa="xxx"></div>
+<!--   html5通常用一下演示的方法定义一个属性(data-)   -->
+<div id="div2" data-aa="xxx"></div>
+<div id="div3" data-first-name="xxx"></div>
+</body>
+<script>
+    var oDiv = document.getElementById('div2');
+    var oDiv3 = document.getElementById('div3');
+//    用dataset取数据属性不用加data-,且取得时候不区分大小写，浏览器编译时会转换为小写
+
+    console.log(oDiv.dataset.aa);
+//    html中逢单词中划线，js中逢单词大写
+    console.log(oDiv3.dataset.firstName);
+
+//    正常html语言区分大小写，js不区分大小写
+</script>
+</html>
