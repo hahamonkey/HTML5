@@ -14,9 +14,11 @@
     oBtn.onclick=function(){
         oSpan.innerHTML='';
         var randNum=Math.random();
+        var arr = [];
         for(var i=0;i<7;i++){
-            oSpan.innerHTML+= parseInt(Math.random()*35+1)+' ';
+           arr.push( parseInt(Math.random()*35+1));
         }
+        oSpan.innerHTML = arr;
         history.pushState(oSpan.innerHTML,'');
     };
     window.onpopstate=function(e){
