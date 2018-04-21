@@ -12,20 +12,24 @@
             background:#000;
         }
         #cav{
-            background-color: #fff;
+            background-color: #e0e0e0;
         }
     </style>
 </head>
 <body>
-<canvas id="cav" width="600" height="600"></canvas>
+<canvas id="cav"></canvas>
 <script>
     var oCav= document.querySelector("#cav");
     var oCtx = oCav.getContext("2d");
+
+    oCav.setAttribute("width",window.innerWidth);
+    oCav.setAttribute("height",window.innerHeight);
+
     var setTime=function(){
         oCtx.clearRect(0,0,600,600);
         oCtx.beginPath();
         oCtx.lineWidth=4;
-        //画刻度盘秒
+        //画刻度盘分秒
         for(var i=0;i<60;i++){
             oCtx.moveTo(300,300);
             oCtx.arc(300,300,200,i*Math.PI/30,(i+1)*Math.PI/30);
@@ -34,23 +38,23 @@
         oCtx.closePath();
         oCtx.beginPath();
         oCtx.arc(300,300,194,0,Math.PI*2);
-        oCtx.fillStyle='#fff';
+        oCtx.fillStyle='#e0e0e0';
         oCtx.fill();
         oCtx.closePath();
-        //画刻度盘分钟
+        //画刻度盘时
         oCtx.beginPath();
         oCtx.moveTo(300,300);
 
         for(var i=0;i<12;i++){
             oCtx.moveTo(300,300);
-            oCtx.arc(300,300,200,i*Math.PI/6,i*Math.PI/6);
+            oCtx.arc(300,300,200,i*Math.PI/6,(i+1)*Math.PI/6);
         }
         oCtx.stroke();
         oCtx.closePath();
         oCtx.beginPath();
         oCtx.moveTo(300,300);
         oCtx.arc(300,300,185,0,Math.PI*2);
-        oCtx.fillStyle='#fff';
+        oCtx.fillStyle='#e0e0e0';
         oCtx.fill();
         oCtx.closePath();
 
